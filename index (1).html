@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Quest of Life</title>
+<meta name="description" content="Turn your to-dos into quests. Earn XP and gold, level up a pixel knight, and unlock gear.">
+<meta property="og:title" content="The Quest of Life">
+<meta property="og:description" content="Turn your to-dos into quests. Earn XP and gold, level up a pixel knight, and unlock gear.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nidhi-chaospropagator.github.io/the-quest-of-life/">
+<meta property="og:image" content="https://nidhi-chaospropagator.github.io/the-quest-of-life/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Quest of Life">
+<meta name="twitter:description" content="Turn your to-dos into quests. Earn XP and gold, level up a pixel knight, and unlock gear.">
+<meta name="twitter:image" content="https://nidhi-chaospropagator.github.io/the-quest-of-life/og-image.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0b0a10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Quest of Life">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%230b0a10'/%3E%3Crect x='4' y='2' width='8' height='9' fill='%23c9cdd2'/%3E%3Crect x='4' y='6' width='8' height='2' fill='%2322252b'/%3E%3Crect x='5' y='6' width='2' height='1' fill='%238fd3ff'/%3E%3Crect x='9' y='6' width='2' height='1' fill='%238fd3ff'/%3E%3Crect x='3' y='11' width='10' height='3' fill='%238e949c'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a10;--panel:#7d2433;--line:#c0586c;--dd:#a24a58;--text:#e4dccb;--dim:#8a7f93;--accent:#bd2f42;--gold:#c9a24a;--xp:#8a5fd0;--hit:#d94a4a;--ink:#f0e6d2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(ellipse at 50% 0,rgba(255,235,200,.18) 0,transparent 65%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'%3E%3Crect width='32' height='32' fill='%2377593a'/%3E%3Crect x='1' y='1' width='14' height='14' fill='%23af865c'/%3E%3Crect x='17' y='1' width='14' height='14' fill='%23a37b53'/%3E%3Crect x='0' y='17' width='7' height='14' fill='%23a37b53'/%3E%3Crect x='9' y='17' width='14' height='14' fill='%23af865c'/%3E%3Crect x='25' y='17' width='7' height='14' fill='%23a37b53'/%3E%3Crect x='1' y='1' width='14' height='1' fill='%23c19a70'/%3E%3Crect x='17' y='1' width='14' height='1' fill='%23c19a70'/%3E%3Crect x='9' y='17' width='14' height='1' fill='%23c19a70'/%3E%3C/svg%3E");background-size:auto,64px 64px;image-rendering:pixelated;background-attachment:fixed;color:var(--text);font-family:"Press Start 2P",ui-monospace,Menlo,monospace;font-size:11px;line-height:1.7;min-height:100vh}
+main{max-width:760px;margin:0 auto;padding:16px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;font-size:10px}
+.cols .box{margin-bottom:0;padding:10px;min-width:0}
+.cols h2{font-size:11px}
+.cols button{font-size:9px;padding:8px 4px}
+@media (max-width:300px){.cols{grid-template-columns:1fr}}
+h1{font-size:16px;margin:4px 0 14px;letter-spacing:2px;color:var(--text);text-shadow:3px 3px 0 #2a0a12}
+.box{background:var(--panel);border:4px solid var(--line);box-shadow:4px 4px 0 var(--line);padding:14px;margin-bottom:18px}
+.hero{display:flex;gap:14px;align-items:center}
+#knight,#knight2{width:120px;height:100px;image-rendering:pixelated;background:var(--bg);border:4px solid var(--line);flex:none;animation:bob 1.2s steps(2) infinite;display:block}
+#edit{width:100%;margin-top:10px;font-size:9px}
+textarea{width:100%;font:inherit;font-size:9px;background:var(--bg);color:var(--text);border:3px solid var(--line);padding:8px;border-radius:0;word-break:break-all}
+#ed,#bk{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.7);z-index:20;padding:12px}
+#ed>div,#bk>div{background:var(--panel);border:4px solid var(--line);box-shadow:6px 6px 0 var(--line);width:100%;max-width:520px;max-height:90vh;overflow:auto;padding:14px}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:-14px;background:var(--panel);padding:10px 0;margin:-10px 0 8px;z-index:1}
+.hd h2{margin:0}
+#ed .dim,#bk .dim{color:#fff}
+.x{flex:none;padding:6px 10px}
+.edrow{display:flex;gap:10px;align-items:center}
+.edrow #grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:92px;gap:8px;overflow-x:auto;flex:1;min-width:0;padding-bottom:8px}
+.av{flex:none;width:120px;display:flex;flex-direction:column;gap:10px}
+#tabs{display:flex;gap:6px;margin:10px 0}#tabs button{flex:1}
+#grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;font-size:8px;min-height:110px;padding:6px 4px}
+.tile canvas{image-rendering:pixelated}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--panel);border:4px solid var(--gold);padding:10px 14px;font-size:9px;z-index:30;display:none;max-width:90%;text-align:center}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.stats{flex:1;min-width:0}
+.bar{height:16px;border:3px solid var(--line);background:var(--bg);margin:6px 0}
+.bar i{display:block;height:100%;width:0;background:var(--xp);transition:width .4s steps(8)}
+.gold{color:var(--gold)}
+.dim{color:var(--dim);font-size:9px}
+h2{font-size:12px;margin:0 0 12px}
+input[type=text]{width:100%;font:inherit;background:var(--bg);color:var(--text);border:3px solid var(--line);padding:10px;margin-bottom:10px;border-radius:0}
+.diff{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.diff button{flex:1}
+button{font:inherit;font-size:10px;color:var(--text);background:var(--bg);border:3px solid var(--line);padding:10px 6px;cursor:pointer;border-radius:0}
+button[aria-pressed=true]{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+button.go{width:100%;background:var(--accent);color:var(--ink);border-color:var(--accent)}
+button:active{transform:translate(2px,2px)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.quest{display:flex;flex-direction:column;gap:8px;align-items:stretch;border:3px solid var(--line);background:var(--bg);padding:10px;margin-bottom:10px}
+.quest span.n{flex:1;word-break:break-word}
+.quest .rw{font-size:8px;color:var(--dim);display:block}
+.tag{height:6px;flex:none}
+.done{background:var(--accent);color:var(--ink);border-color:var(--accent);padding:8px}
+.del{padding:8px;color:var(--hit)}
+button:disabled{opacity:.35;cursor:not-allowed}
+.dd{background:var(--dd);border:3px solid var(--line);padding:10px;margin:8px 0 12px}
+.dd .go{border-color:var(--ink)}
+.blk{--panel:#693a09;--line:#a8742e;--bg:#3d2205;--dim:#e0c9a6;--gold:#ffde59}
+.qbox{--panel:#693a09;--line:#04b861;--bg:#3d2205;--dim:#e0c9a6;--accent:#04b861;--ink:#06210f;--dd:#2f6a45}
+.sum{--panel:#c84545;--line:#8a2a2a;--text:#ffffff;color:var(--text)}
+.hoard{--panel:#693a09;--line:#ffde59;--dim:#e0c9a6;--bg:#3d2205;--accent:#ffde59;--ink:#1a1200;--dd:#7a6620}
+#dlist{max-height:158px;overflow-y:auto;margin-top:6px}
+.dn{border:3px solid var(--line);background:var(--bg);padding:6px;margin-bottom:6px;font-size:9px}
+.dn span{display:block}.dn span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dn span+span{font-size:8px;color:var(--dim)}
+footer{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--text);border:3px solid var(--line);padding:8px;text-decoration:none;font-size:9px}
+footer button{font-size:9px}
+footer button,footer a{background:#cb6ce6;color:#25082e;border:3px solid #8a3fa3}
+#undo{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--panel);border:4px solid var(--line);padding:8px 12px;font-size:9px;z-index:30;display:none;align-items:center;gap:10px}
+.empty{color:var(--dim);text-align:center;padding:10px}
+.pop{position:fixed;pointer-events:none;font-size:12px;color:var(--gold);z-index:9;animation:up .9s steps(9) forwards}
+.sp{position:fixed;width:8px;height:8px;pointer-events:none;z-index:9;animation:fly .7s steps(7) forwards}
+@keyframes up{to{transform:translateY(-60px);opacity:0}}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+#lvl{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:20}
+#lvl div{background:var(--panel);border:4px solid var(--gold);padding:24px;text-align:center;box-shadow:6px 6px 0 var(--gold)}
+@media (prefers-reduced-motion:reduce){canvas{animation:none}.pop,.sp{animation-duration:.01s}}
+</style>
+</head>
+<body>
+<main>
+<h1>THE QUEST OF LIFE</h1>
+<p class="box sum" style="font-size:9px;margin-top:0">Turn your to-dos into quests. Finish them to earn XP and gold (1 XP = 1 gold) and level up your knight. Then spend your gold on rewards you set for yourself. Keep completing quests to unlock headgear, weapons and pets for your knight (tap Edit).</p>
+<section class="box hero blk">
+<div style="flex:none"><canvas id="knight" width="24" height="20" aria-label="Your knight"></canvas><button id="edit">Edit</button></div>
+<div class="stats">
+<div id="kname" style="word-break:break-word">Knight</div><div>Lv <b id="lv">1</b></div>
+<div class="bar"><i id="xpbar"></i></div>
+<div class="dim"><span id="xp">0</span> / <span id="need">50</span> XP</div>
+<div class="gold">Gold: <span id="gold">0</span></div>
+<div class="dim">Quests done: <span id="cnt">0</span></div>
+</div>
+</section>
+<div class="cols">
+<section class="box qbox">
+<h2>Quests</h2>
+<button class="go" id="qtog" aria-expanded="false">+ Add new quest</button>
+<div class="dd" id="qdd" hidden>
+<p class="dim">Every XP you earn is also 1 gold coin.</p>
+<input type="text" id="name" maxlength="60" placeholder="e.g. Walk for 20 minutes" aria-label="Quest name">
+<div class="diff" role="group" aria-label="Difficulty">
+<button data-d="easy" aria-pressed="true">Easy<br>10 XP</button>
+<button data-d="medium" aria-pressed="false">Medium<br>20 XP</button>
+<button data-d="hard" aria-pressed="false">Hard<br>30 XP</button>
+</div>
+<button class="go" id="add">Add quest</button>
+</div>
+<div id="list" style="margin-top:14px"></div>
+<button id="dtog" style="width:100%;margin-top:6px" aria-expanded="false">Completed (<span id="dcnt">0</span>)</button>
+<div id="dlist" hidden></div>
+</section>
+<section class="box hoard">
+<h2>The Treasure Hoard</h2>
+<button class="go" id="rtog" aria-expanded="false">+ Add new reward</button>
+<div class="dd" id="rdd" hidden>
+<p class="dim">Name a reward for yourself, set its price, and buy it with your gold.</p>
+<input type="text" id="rname" maxlength="60" placeholder="e.g. Watch a movie" aria-label="Reward name">
+<div class="diff rdiff" role="group" aria-label="Reward price">
+<button data-d="easy" aria-pressed="true">Easy<br>10 gold</button>
+<button data-d="medium" aria-pressed="false">Medium<br>20 gold</button>
+<button data-d="hard" aria-pressed="false">Hard<br>30 gold</button>
+</div>
+<button class="go" id="radd">Add reward</button>
+</div>
+<div id="rlist" style="margin-top:14px"></div>
+</section>
+</div>
+<footer><button id="backup">Backup</button><button id="reset">Reset game</button><a id="fb" hidden target="_blank" rel="noopener">Send feedback</a></footer>
+</main>
+<div id="ed" role="dialog" aria-label="Customize your knight"><div>
+<div class="hd"><h2>Customize your knight</h2><button class="x" id="edx" aria-label="Close">X</button></div>
+<p class="dim">Unlocked by finishing quests. One item per slot; tap again to remove. Swipe the items sideways to browse. Quests done: <span id="edcnt">0</span></p>
+<label class="dim" for="kn">Name your knight (shown after "Knight")</label>
+<input type="text" id="kn" maxlength="16" placeholder="e.g. Arthur" style="margin-top:6px">
+<div id="tabs"></div>
+<div class="edrow"><div id="grid"></div><div class="av"><canvas id="knight2" width="24" height="20" aria-label="Preview of your knight"></canvas><button class="go" id="edclose">Done</button></div></div>
+</div></div>
+<div id="bk" role="dialog" aria-label="Backup and restore"><div>
+<div class="hd"><h2>Backup and restore</h2><button class="x" id="bkx" aria-label="Close">X</button></div>
+<p class="dim">Copy this code and keep it safe, such as in a note to yourself. To restore, replace the text below with your saved code and tap Restore.</p>
+<textarea id="bkt" rows="5" aria-label="Save code"></textarea>
+<div style="display:flex;gap:8px;margin:10px 0"><button class="go" id="bkcopy">Copy code</button><button class="go" id="bkrest">Restore</button></div>
+<p class="dim" id="bkmsg" role="status"></p>
+</div></div>
+<div id="toast" role="status"></div>
+<div id="undo"><span>Quest done.</span><button id="undobtn">Undo</button></div>
+<div id="lvl"><div><p>LEVEL UP!</p><p class="gold">You are now level <span id="newlv"></span></p><button class="go" id="ok">Onward</button></div></div>
+<script>
+var DIFF={easy:{xp:10,gold:10,c:"#7f6fa8"},medium:{xp:20,gold:20,c:"#c9a24a"},hard:{xp:30,gold:30,c:"#d94a4a"}};
+var KEY="pixelquest-v1",snap=null,S={lv:1,xp:0,gold:0,cnt:0,quests:[],rewards:[],done:[],eq:{head:-1,weapon:-1,pet:-1}},pick="easy";
+try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var need=function(l){return 50+(l-1)*25};
+// Knight sprite: k outline, h light grey, m mid grey, d dark grey, v visor, e eye glow, y gold trim
+var MAP=["......kkkk......",".....khhhhk.....","....khhhhhhk....","....khhhhmhk....","....kvevvevk....",".....kmmmmk.....","...kkhhhhhhkk...","..khhkmmmmkhhk..","..khhkmyymkhhk..","..kddkmmmmkddk..","...kkkmmmmkkk...","....kmmkkmmk....","....kddkkddk....","....khhkkhhk....","..kkkkkkkkkkkk.."];
+MAP.push("................");
+var COL={k:"#1a1c22",h:"#c9cdd2",m:"#8e949c",d:"#5a6068",v:"#22252b",e:"#8fd3ff",y:"#f2c94c"};
+// Accessory sprites: letters a-d pick colors from each item's palette
+var B={crown:['a..aa..a','aa.aa.aa','aaaaaaaa','acaaaaca','bbbbbbbb'],hat:['...aa...','..aaaa..','.aaaaaa.','bbbbbbbb','cccccccc'],horns:['a......a','a......a','aa....aa','ab....ba','bb....bb'],halo:['.aaaaaa.','a......a','a......a','.aaaaaa.'],plume:['...aaa..','..aaaaa.','.aabaaa.','..abbb..','...bb...'],
+sword:['..a..','..a..','..a..','..a..','..a..','..a..','..a..','bbbbb','..c..','..c..','..d..'],axe:['..aa.','..aaa','..aaa','..aa.','..b..','..b..','..b..','..b..','..b..','..b..'],staff:['.aaa.','aaaaa','aaaaa','.aaa.','..b..','..b..','..b..','..b..','..b..','..b..','..b..','..b..'],bow:['...ab','..a.b','.a..b','a...b','a...b','a...b','a...b','.a..b','..a.b','...ab'],potion:['..c..','..b..','.aaa.','aaaaa','aaaaa','aaaaa','.aaa.'],hammer:['aaaaa','aaaaa','aaaaa','..b..','..b..','..b..','..b..','..b..','..b..'],
+cat:['a....a','aa..aa','aaaaaa','abaaba','aaccaa','.aaaa.'],dog:['b....b','baaaab','aaaaaa','adaada','aaccaa','.aaaa.'],bird:['..aa..','.aaaa.','abaaac','aaaaa.','.aaaa.','..c.c.'],slime:['......','..aa..','.aaaa.','abaaba','aaaaaa','aaaaaa'],dragon:['c....c','ca..ac','aaaaaa','abaaba','aaddaa','.aaaa.']};
+// [name, shape, colors, quests needed]
+var ITEMS={head:[['Bronze Crown','crown','b9783a e6c86e c2402f',2],['Apprentice Hat','hat','3b5bdb f2c94c 1c2b6b',4],['Bone Horns','horns','e8e0c8 b8ad8a',8],['Gold Halo','halo','f2c94c',12],['Red Plume','plume','d94a4a f0e6d2',16],['Silver Crown','crown','c9cdd2 8e949c 6ec1ff',20],['Sorcerer Hat','hat','7a3fb5 c9a24a 3b1d5c',25],['Viking Horns','horns','f0e6d2 c9a24a',30],['Frost Halo','halo','8fd3ff',35],['Raven Plume','plume','2b2233 8a5fd0',40],['Golden Crown','crown','f2c94c ffe58a d94a4a',50],['Archmage Hat','hat','14122b c9a24a 8a5fd0',60],['Demon Horns','horns','a3202f 5c0f1a',75],['Dusk Halo','halo','b48cf0',90],['Phoenix Plume','plume','ff8a3d ffd24a',100]],
+weapon:[['Rusty Sword','sword','9a9aa0 6d5a3a 4a3a2a 6d5a3a',5],['Immortality Potion','potion','ff5fa2 dfe9ff 8a5a2a',10],['Iron Sword','sword','c9cdd2 5a6068 4a3a2a 5a6068',15],['Apprentice Staff','staff','8a5fd0 8a5a2a',20],['Hunter Bow','bow','8a5a2a e4dccb',25],['Healing Potion','potion','d94a4a dfe9ff 8a5a2a',30],['Battle Axe','axe','c9cdd2 6d4a2a',35],['Flame Sword','sword','ff8a3d c9a24a 3a1d1d ffd24a',40],['Mana Potion','potion','4a8cff dfe9ff 8a5a2a',50],['Frost Staff','staff','8fd3ff 5a6068',60],['War Hammer','hammer','8e949c 6d4a2a',70],['Elven Bow','bow','3fa35a e4dccb',80],['Holy Sword','sword','f0e6d2 f2c94c f2c94c f2c94c',90],['Berserker Axe','axe','d94a4a 3a1d1d',100],['Archmage Staff','staff','f2c94c c9a24a',120]],
+pet:[['Black Cat','cat','3a3a44 ffd24a f08aa0',3],['Green Slime','slime','6fcf6f 14301a',7],['Loyal Hound','dog','b0824f 6d4a2a 2b1a10 1a1a1a',11],['Raven','bird','2b2233 ffd24a f2a03d',15],['Ginger Cat','cat','e8913a 14301a f08aa0',22],['Blue Slime','slime','5aa0ff 0f1f4a',28],['Baby Dragon','dragon','4fbf6a 14301a e8d28a 2a5a3a',34],['White Dove','bird','f0f0f5 3a3a44 f2a03d',42],['Snow Pup','dog','f0f0f5 b8c4d8 2b2233 1a1a1a',52],['Ghost Cat','cat','c9dcff 3a5a9a ffffff',62],['Gold Slime','slime','f2c94c 5a3a10',72],['Phoenix Chick','bird','ff6a3d 2b1a10 ffd24a',82],['Frost Wyrm','dragon','6ec1ff 0f1f4a f0f8ff 3a7aa8',92],['Hellhound','dog','6a1a22 d94a4a ffd24a 1a1a1a',100],['Ember Drake','dragon','d94a4a 2b1a10 ffd24a 5c0f1a',110]]};
+var TITLE={head:'Headgear',weapon:'Weapon',pet:'Pet'},tab='head';
+function spr(c,key,cols,x,y){var p=cols.split(' ');B[key].forEach(function(r,j){for(var i=0;i<r.length;i++){var k=r.charCodeAt(i)-97;if(k>=0&&p[k]){c.fillStyle='#'+p[k];c.fillRect(x+i,y+j,1,1)}}})}
+function drawHero(){drawTo('knight');drawTo('knight2')}
+function drawTo(id){var c=document.getElementById(id).getContext('2d'),it;c.clearRect(0,0,24,20);
+MAP.forEach(function(row,y){for(var x=0;x<16;x++){var ch=row[x];if(COL[ch]){c.fillStyle=COL[ch];c.fillRect(x+4,y+4,1,1)}}});
+if(S.eq.pet>=0){it=ITEMS.pet[S.eq.pet];spr(c,it[1],it[2],0,14)}
+if(S.eq.weapon>=0){it=ITEMS.weapon[S.eq.weapon];spr(c,it[1],it[2],18,18-B[it[1]].length)}
+if(S.eq.head>=0){it=ITEMS.head[S.eq.head];spr(c,it[1],it[2],8,1)}}
+function openEd(){document.getElementById('kn').value=S.name||'';document.getElementById('ed').style.display='flex';renderEd()}
+function renderEd(){var T=document.getElementById('tabs'),G=document.getElementById('grid');T.textContent='';G.textContent='';document.getElementById('edcnt').textContent=S.cnt;
+Object.keys(TITLE).forEach(function(k){var b=document.createElement('button');b.textContent=TITLE[k];b.setAttribute('aria-pressed',k===tab);b.onclick=function(){tab=k;renderEd()};T.appendChild(b)});
+ITEMS[tab].forEach(function(it,i){var ok=S.cnt>=it[3],on=S.eq[tab]===i,rows=B[it[1]];
+var b=document.createElement('button');b.className='tile';b.disabled=!ok;b.setAttribute('aria-pressed',on);
+var cv=document.createElement('canvas');cv.width=rows[0].length;cv.height=rows.length;cv.style.width=cv.width*4+'px';cv.style.height=cv.height*4+'px';
+spr(cv.getContext('2d'),it[1],ok?it[2]:'3a2a45 3a2a45 3a2a45 3a2a45',0,0);
+var n=document.createElement('span');n.textContent=it[0];var s=document.createElement('span');s.className='dim';s.style.fontSize='7px';s.textContent=ok?(on?'Equipped':'Tap to equip'):'Locked: '+it[3]+' quests';
+b.append(cv,n,s);b.onclick=function(){S.eq[tab]=on?-1:i;save();drawHero();renderEd()};G.appendChild(b)})}
+function checkUnlock(){var m=[];Object.keys(ITEMS).forEach(function(k){ITEMS[k].forEach(function(it){if(it[3]===S.cnt)m.push(it[0])})});
+if(m.length){var t=document.getElementById('toast');t.textContent='Unlocked: '+m.join(', ')+'! Tap Edit to equip.';t.style.display='block';setTimeout(function(){t.style.display='none'},4500)}}
+var $=function(i){return document.getElementById(i)};
+function render(){
+$("lv").textContent=S.lv;$("kname").textContent="Knight"+((S.name||"").trim()?" "+S.name.trim():"");$("xp").textContent=S.xp;$("need").textContent=need(S.lv);
+$("gold").textContent=S.gold;$("cnt").textContent=S.cnt;
+$("xpbar").style.width=Math.min(100,S.xp/need(S.lv)*100)+"%";
+var L=$("list");L.textContent="";
+if(!S.quests.length){var e=document.createElement("div");e.className="empty";e.textContent="No quests yet. Add one above to begin.";L.appendChild(e)}
+S.quests.forEach(function(q){
+var d=DIFF[q.d],row=document.createElement("div");row.className="quest";
+var t=document.createElement("div");t.className="tag";t.style.background=d.c;
+var n=document.createElement("span");n.className="n";n.textContent=q.n;
+var rw=document.createElement("span");rw.className="rw";rw.textContent="+"+d.xp+" XP, +"+d.gold+" gold";n.appendChild(rw);
+var ok=document.createElement("button");ok.className="done";ok.textContent="Done";ok.setAttribute("aria-label","Complete quest "+q.n);
+ok.onclick=function(ev){complete(q.id,ev)};
+var x=document.createElement("button");x.className="del";x.textContent="X";x.setAttribute("aria-label","Delete quest "+q.n);
+x.onclick=function(){S.quests=S.quests.filter(function(z){return z.id!==q.id});save();render()};
+row.append(t,n,ok,x);L.appendChild(row)});renderR();renderD()}
+function renderR(){var L=$("rlist");L.textContent="";
+if(!S.rewards.length){var e=document.createElement("div");e.className="empty";e.textContent="The hoard is empty. Add a reward to work toward.";L.appendChild(e)}
+S.rewards.forEach(function(r){var d=DIFF[r.d],row=document.createElement("div");row.className="quest";
+var t=document.createElement("div");t.className="tag";t.style.background=d.c;
+var n=document.createElement("span");n.className="n";n.textContent=r.n;
+var rw=document.createElement("span");rw.className="rw";rw.textContent=d.gold+" gold";n.appendChild(rw);
+var b=document.createElement("button");b.className="done";b.textContent="Claim";b.setAttribute("aria-label","Claim reward "+r.n);
+b.disabled=S.gold<d.gold;b.onclick=function(ev){claim(r.id,ev)};
+var x=document.createElement("button");x.className="del";x.textContent="X";x.setAttribute("aria-label","Delete reward "+r.n);
+x.onclick=function(){S.rewards=S.rewards.filter(function(z){return z.id!==r.id});save();render()};
+row.append(t,n,b,x);L.appendChild(row)})}
+function addR(){var v=$("rname").value.trim();if(!v){$("rname").focus();return}S.rewards.unshift({id:Date.now(),n:v,d:rpick});$("rname").value="";$("rdd").hidden=true;$("rtog").setAttribute("aria-expanded","false");save();render()}
+function claim(id,ev){var r=S.rewards.find(function(z){return z.id===id});if(!r)return;var d=DIFF[r.d];if(S.gold<d.gold)return;
+var b=ev.target.getBoundingClientRect();burst(b.left+b.width/2,b.top,"-"+d.gold+" gold");S.gold-=d.gold;save();render()}
+function renderD(){var L=$("dlist"),n=S.done||[];$("dcnt").textContent=n.length;L.textContent="";
+if(!n.length){var e=document.createElement("div");e.className="empty";e.textContent="No finished quests yet.";L.appendChild(e)}
+n.forEach(function(q){var d=DIFF[q.d],r=document.createElement("div");r.className="dn";
+var a=document.createElement("span");a.textContent=q.n;var b=document.createElement("span");b.textContent="+"+d.xp+" XP, "+new Date(q.t).toLocaleDateString();
+r.append(a,b);L.appendChild(r)})}
+function burst(x,y,txt){
+var p=document.createElement("div");p.className="pop";p.textContent=txt;p.style.left=(x-30)+"px";p.style.top=y+"px";document.body.appendChild(p);setTimeout(function(){p.remove()},1000);
+for(var i=0;i<10;i++){var s=document.createElement("div");s.className="sp";s.style.left=x+"px";s.style.top=y+"px";
+s.style.background=["#c9a24a","#a3202f","#8a5fd0"][i%3];var a=i/10*6.28;
+s.style.setProperty("--dx",Math.cos(a)*50+"px");s.style.setProperty("--dy",Math.sin(a)*50+"px");document.body.appendChild(s);setTimeout(function(el){el.remove()},800,s)}}
+function complete(id,ev){
+var q=S.quests.find(function(z){return z.id===id});if(!q)return;var d=DIFF[q.d];
+var b=ev.target.getBoundingClientRect();snap=JSON.stringify(S);burst(b.left+b.width/2,b.top,"+"+d.xp+" XP");
+S.quests=S.quests.filter(function(z){return z.id!==id});S.xp+=d.xp;S.gold+=d.gold;S.cnt++;S.done.unshift({n:q.n,d:q.d,t:Date.now()});S.done=S.done.slice(0,100);checkUnlock();
+var up=false;while(S.xp>=need(S.lv)){S.xp-=need(S.lv);S.lv++;up=true}
+save();render();if(up){$("newlv").textContent=S.lv;$("lvl").style.display="flex";$("ok").focus()}showUndo()}
+function add(){var v=$("name").value.trim();if(!v){$("name").focus();return}
+S.quests.unshift({id:Date.now(),n:v,d:pick});$("name").value="";$("qdd").hidden=true;$("qtog").setAttribute("aria-expanded","false");save();render()}
+$("add").onclick=add;$("name").onkeydown=function(e){if(e.key==="Enter")add()};
+$("ok").onclick=function(){$("lvl").style.display="none"};
+var rpick="easy";
+document.querySelectorAll(".diff").forEach(function(g){var isR=g.classList.contains("rdiff");g.querySelectorAll("button").forEach(function(b){b.onclick=function(){if(isR)rpick=b.dataset.d;else pick=b.dataset.d;g.querySelectorAll("button").forEach(function(o){o.setAttribute("aria-pressed",o===b)})}})});
+$("radd").onclick=addR;$("edit").onclick=openEd;$("edclose").onclick=function(){$("ed").style.display="none"};$("edx").onclick=$("edclose").onclick;drawHero();
+var FEEDBACK="https://forms.gle/n72tweuDu5W1et8t5",undoT,rc=0,rT;
+function showUndo(){$("undo").style.display="flex";clearTimeout(undoT);undoT=setTimeout(function(){$("undo").style.display="none"},6000)}
+$("undobtn").onclick=function(){if(!snap)return;S=JSON.parse(snap);snap=null;save();render();drawHero();$("undo").style.display="none";$("lvl").style.display="none"};
+$("reset").onclick=function(){var b=this;if(!rc){rc=1;b.textContent="Tap again to erase all";rT=setTimeout(function(){rc=0;b.textContent="Reset game"},4000)}else{clearTimeout(rT);rc=0;b.textContent="Reset game";S={lv:1,xp:0,gold:0,cnt:0,quests:[],rewards:[],done:[],eq:{head:-1,weapon:-1,pet:-1}};save();render();drawHero()}};
+$("backup").onclick=function(){$("bkt").value=btoa(unescape(encodeURIComponent(JSON.stringify(S))));$("bkmsg").textContent="";$("bk").style.display="flex"};
+$("bkx").onclick=function(){$("bk").style.display="none"};
+$("bkcopy").onclick=function(){var t=$("bkt"),ok=false;t.select();try{ok=document.execCommand("copy")}catch(e){}$("bkmsg").textContent=ok?"Copied.":"Select the code and copy it by hand."};
+$("bkrest").onclick=function(){var m=$("bkmsg");try{var o=JSON.parse(decodeURIComponent(escape(atob($("bkt").value.trim()))));
+var fl=function(a){return Array.isArray(a)?a.filter(function(x){return x&&typeof x.n==="string"&&DIFF[x.d]}).slice(0,200):null};
+var q=fl(o.quests),r=fl(o.rewards),e=o.eq||{};
+if(!q||!r||[o.lv,o.xp,o.gold,o.cnt].some(function(v){return typeof v!=="number"||v<0||!isFinite(v)}))throw 0;
+var ix=function(k){var v=e[k];return typeof v==="number"&&v>=0&&v<ITEMS[k].length?v:-1};
+S={lv:Math.max(1,o.lv|0),xp:o.xp,gold:o.gold,cnt:o.cnt,quests:q,rewards:r,done:fl(o.done)||[],name:typeof o.name==="string"?o.name.slice(0,16):"",eq:{head:ix("head"),weapon:ix("weapon"),pet:ix("pet")}};
+save();render();drawHero();m.textContent="Restored. Welcome back, knight."}catch(x){m.textContent="That code did not work. Paste the whole code and try again."}};
+$("kn").oninput=function(){S.name=this.value.slice(0,16);save();render()};
+function tog(bt,box){var h=box.hidden;box.hidden=!h;bt.setAttribute("aria-expanded",h)}
+$("qtog").onclick=function(){tog(this,$("qdd"))};$("rtog").onclick=function(){tog(this,$("rdd"))};$("dtog").onclick=function(){tog(this,$("dlist"))};
+if(FEEDBACK){var f=$("fb");f.href=/^http/.test(FEEDBACK)?FEEDBACK:"mailto:"+FEEDBACK+"?subject=The%20Quest%20of%20Life%20feedback";f.hidden=false}$("rname").onkeydown=function(e){if(e.key==="Enter")addR()};
+render();
+</script>
+</body>
+</html>
